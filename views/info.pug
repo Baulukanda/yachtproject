@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	div !{labels.getLabel('info_text').markdown}
+
+block navbar
+	+navbar(labels, navbarActiveSection)

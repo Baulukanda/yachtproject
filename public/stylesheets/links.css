@@ -1,0 +1,19 @@
+.linkWrapper {
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	padding: 10px;
+}
+
+a:hover .linkWrapper {
+	background-color: lightgray;
+}
+
+.linkWrapper img {
+	max-width: 160px;
+	height: 100%;
+}
+
+.linkWrapper h4, p {
+	display: inline;
+}

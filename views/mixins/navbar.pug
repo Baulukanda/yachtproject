@@ -1,0 +1,24 @@
+mixin navbar(labels, active)
+	nav(class='navbar navbar-expand-md navbar-dark fixed-top bg-dark')
+		button(class='navbar-toggler', id='menuToggler', type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+			span(class='navbar-toggler-icon')
+		div(class='collapse navbar-collapse', id='menuContent')
+			ul(class='navbar-nav mr-auto')
+				li(class='nav-item ' + active.home)
+					a(class='nav-link', href='/')= labels.getLabel('navbar_home').text
+				li(class='nav-item ' + active.info)
+					a(class='nav-link', href='/info')= labels.getLabel('navbar_info').text	
+				li(class='nav-item ' + active.links)
+					a(class='nav-link', href='/links')= labels.getLabel('navbar_links').text
+				li(class='nav-item ' + active.photos)
+					a(class='nav-link', href='/photos')= labels.getLabel('navbar_photos').text
+				li(class='nav-item ' + active.contact)
+					a(class='nav-link', href='/contact')= labels.getLabel('navbar_contact').text
+				li(class='nav-item dropdown', id='dropdown')
+					a(class='nav-link dropdown-toggle', id='dropdownToggler', href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= labels.getLabel('navbar_language').text
+					div(class='dropdown-menu', id='dropdownContent', aria-labelledby='dropdownToggler')
+						a(class='dropdown-item', href='/language/en')= labels.getLabel('navbar_lang_english').text
+						a(class='dropdown-item', href='/language/da')= labels.getLabel('navbar_lang_danish').text
+						a(class='dropdown-item', href='/language/sv')= labels.getLabel('navbar_lang_swedish').text
+						a(class='dropdown-item', href='/language/no')= labels.getLabel('navbar_lang_norwegian').text
+						a(class='dropdown-item', href='/language/ru')= labels.getLabel('navbar_lang_russian').text

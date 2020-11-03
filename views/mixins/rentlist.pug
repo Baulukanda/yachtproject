@@ -1,0 +1,19 @@
+mixin rentPeriodElement(rentPeriod)
+	=new Date(rentPeriod.startDate).toISOString().split('T')[0]
+	=" - "
+	=new Date(rentPeriod.endDate).toISOString().split('T')[0]
+
+mixin list(rentPeriods, rent)
+	ul(class="rentPeriodList")
+		each rentPeriod in rentPeriods
+			if rentPeriod.rent && !(rent && rentPeriod.rent === rent._id)
+				li(class="unavailable" id=rentPeriod._id)
+					+rentPeriodElement(rentPeriod)
+			else
+				//- It should not be possible to change periods if the rent is accepted, due to us not updating the 
+				//- rentPeriods, if we deselect some periods.
+				li(class="available" onClick=(rent && rent.status === "accepted" ? undefined : "markPeriod(event)") id=rentPeriod._id)
+					+rentPeriodElement(rentPeriod)
+					
+script="let rentPeriods = " + (rent ? JSON.stringify(rent.rentPeriods).split('"').join("'") : false) + ";"
+link(rel='stylesheet', href='/stylesheets/rentlist.css')

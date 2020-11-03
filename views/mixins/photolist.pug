@@ -1,0 +1,4 @@
+mixin photolist(imgurls)
+	div(class="img-content-div")
+		each imgurl in imgurls
+			img(src=imgurl onClick="imgClick(event)")

@@ -1,0 +1,38 @@
+:root {
+	--unavailable-color: rgb(185, 185, 185);
+}
+.rentPeriodList{
+	padding: 0;
+	list-style-type: none;
+	width: 350px;
+	text-align: center;
+	font-size: 22px;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;          /* Likely future */ 
+}
+.rentPeriodList li {
+	border: 1px solid black;
+	border-radius: 5px;
+	overflow: hidden;	
+	margin-bottom: 3px; 
+}
+.unavailable {
+	background-color: var(--unavailable-color);
+}
+.available {
+	/*background-color: blue;*/
+}
+.legend {
+	width: 14px;
+	height: 14px;
+	border: 1px solid black;
+	display: inline-block;
+}
+.legend.gray {
+	background-color: var(--unavailable-color);
+}
+.legend.green {
+	background-color: lightgreen;
+}

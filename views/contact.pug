@@ -1,0 +1,102 @@
+extends layout
+
+block content
+	include mixins/rentlist
+	div(class="row")
+		div(class='col-6')
+			form
+				div(class='form-group')
+					label Name:
+					input(
+						id='name'
+						class='form-control'
+						type = 'text'
+						name = 'name'
+					)
+					small(
+						id='nameError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Phone:
+					input(
+						id='phone'
+						class='form-control'
+						type = 'tel'
+						name = 'phone'
+					)
+					small(
+						id='phoneError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label E-mail:
+					input(
+						id='email'
+						class='form-control'
+						type = 'text'
+						name = 'email'
+					)
+					small(
+						id='emailError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Country:
+					input(
+						id='country'
+						class='form-control'
+						type = 'text'
+						name = 'country'
+					)
+					small(
+						id='countryError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Number of guests:
+					input(
+						id='numberOfGuests'
+						class='form-control'
+						type = 'text'
+						name = 'numberOfGuests'
+					)
+					small(
+						id='numberOfGuestsError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Comment:
+					textarea(
+						id='comment'
+						class='form-control'
+						name="comment"
+						cols="30" 
+						rows="10"
+						style= 'resize: none'
+					)
+				input(
+					class='btn btn-primary'
+					id='submit-btn'
+					type = 'submit'
+					value = 'submit'
+				)
+				p(id='status')
+		div(class='col-6')
+			h3 List of rent periods:
+			br
+			+list(rentPeriods)
+			span
+				div(class="legend gray")
+				|  Unavailable
+				br
+				div(class="legend white")
+				|  Available
+				br
+				div(class="legend green")
+				|  Selected
+	block script
+		script(src='javascripts/contact.js')
+
+block navbar
+	+navbar(labels, navbarActiveSection)

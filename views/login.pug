@@ -1,0 +1,17 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		title Nataliya Yacht Admin
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/login.css')
+	body(class='text-center')
+		form(class='form-signin', method='POST')
+			h1(class='h3 mb-3 font-weight-normal') Please sign in
+			input(type='text', id='inputUsername', name='username', class='form-control', placeholder='Username' required, autofocus, autocomplete='off')
+			input(type='password', id='inputPassword', name='password', class='form-control', placeholder='Password', required, autocomplete='off')
+			button(class='btn btn-lg btn-primary btn-block', type='submit') Sign in
+			if error
+				div(class='mt-3 bg-warning text-white')
+					#{error}

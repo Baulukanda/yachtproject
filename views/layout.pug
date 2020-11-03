@@ -1,0 +1,25 @@
+include mixins/navbar.pug
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		title Nataliya Yacht
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/styles.css')
+	body
+		block navbar
+
+		main(role='main')
+			div(class='jumbotron')
+				div(class='container')
+					h1(class='display-3') Nataliya Yacht
+					p WIP
+			div(class='container')
+				block content
+
+		footer(class='container')
+			p &copy; Nataliya Yacht 2018-2019
+
+		block scripts
+			script(src='/javascripts/navbar.js')

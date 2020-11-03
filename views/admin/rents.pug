@@ -1,0 +1,42 @@
+extends layout
+
+mixin rentList(list)
+	div(class="list-group container ml-0")
+		each rent in list
+			div(class="row list-group-item list-group-item-action align-items-start")
+				div(class="container")
+					div(class="row")
+						div(class="col-6")
+							="Name: " + rent.name
+							br  
+							="Phone: " + rent.phone
+							br
+							="E-mail: " + rent.email
+							br
+							="Country: " + rent.country
+							br
+							="Number of Guests: " + rent.numberOfGuests
+							br
+							="Comment: " + rent.comment
+						div(class="col-6")
+							each period in rent.rentPeriods
+								div(class="d-flex w-100")
+									h5(class="mb-1")
+									=new Date(period.startDate).toDateString()
+									|  - 
+									=new Date(period.endDate).toDateString()
+							button(type="button" class="btn btn-primary" onclick="updateRent('" + rent._id + "')") Update
+							button(type="button" class="btn btn-danger" onclick="deleteRent('" + rent._id + "')") Delete
+
+block content
+	h2 Rents
+	button(type="button" class="btn btn-success" onclick="createRent()") Create
+	br
+	|Requested rents:
+	+rentList(requestedList)
+	|Accepted rents:
+	+rentList(acceptedList)
+	|Rejected rents:
+	+rentList(rejectedList)
+	block scripts
+		script(src='/javascripts/admin/rents.js')

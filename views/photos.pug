@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/photolist
+
+block content
+	link(rel='stylesheet', href='/stylesheets/images/images.css')
+	h1= title
+	+photolist(imgurls)
+	div(id="myModal" class="modal" onClick="closeImg(event)")
+		span(class="close")="x"
+		img(class="modal-content" id="img01" onClick="stopPropagation(event)")
+		div(id="caption")
+	script(src='/javascripts/images.js')
+
+block navbar
+	+navbar(labels, navbarActiveSection)

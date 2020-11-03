@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	if label
+		h2 Edit Label ID: #{label._id}
+		form(method='POST')
+			input(type='hidden', name='_id', value=label._id)
+			each language in languages
+				div(class='form-group')
+					label(for=language)= language.substr(0, 1).toUpperCase() + language.substr(1)
+					textarea(class='form-control', id=language, name=language, rows='5')= label.values.get(language)
+			button(type='submit', class='btn btn-primary mb-2') Save
+			a(class='btn btn-secondary mb-2 ml-1', href='/admin/labels') Cancel
+
+	else
+		h2 Labels
+		div(class='table-responsive')
+			table(class='table table-striped table-sm')
+				thead
+					tr
+						th ID
+						th Description
+						th
+				tbody
+					each label in labels
+						tr
+							td= label._id
+							td
+							td
+								a(class='button', href='/admin/labels/' + label._id) Edit

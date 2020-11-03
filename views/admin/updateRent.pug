@@ -1,0 +1,133 @@
+extends layout
+
+block content
+	include ../mixins/rentlist
+	div(class="row")
+		div(class='col-6')
+			form
+				div(class='form-group')
+					label Name:
+					input(
+						id='name'
+						class='form-control'
+						type = 'text'
+						name = 'name'
+						value = (rent ? rent.name : "")
+					)
+					small(
+						id='nameError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Phone:
+					input(
+						id='phone'
+						class='form-control'
+						type = 'tel'
+						name = 'phone'
+						value = (rent ? rent.phone : "")
+					)
+					small(
+						id='phoneError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label E-mail:
+					input(
+						id='email'
+						class='form-control'
+						type = 'text'
+						name = 'email'
+						value = (rent ? rent.email : "")
+					)
+					small(
+						id='emailError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Country:
+					input(
+						id='country'
+						class='form-control'
+						type = 'text'
+						name = 'country'
+						value = (rent ? rent.country : "")
+					)
+					small(
+						id='countryError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Number of guests:
+					input(
+						id='numberOfGuests'
+						class='form-control'
+						type = 'text'
+						name = 'numberOfGuests'
+						value = (rent ? rent.numberOfGuests : "")
+					)
+					small(
+						id='numberOfGuestsError'
+						class='text-danger'
+					)
+				div(class='form-group')
+					label Comment:
+					textarea(
+						id='comment'
+						class='form-control'
+						name="comment"
+						cols="30" 
+						rows="10"
+						style= 'resize: none'
+					)
+						= (rent ? rent.comment : "")
+				div(class = "form-group" onclick="setSubmitButton()")
+					label Select status:
+					div
+						input(
+							type = 'radio' 
+							value = 'requested'
+							name = 'status'
+							checked = (!rent || rent.status === "requested" ? "checked" : undefined)
+						)
+						|  Requested
+					div
+						input(
+							type = 'radio' 
+							value = 'accepted'
+							name = 'status'
+							checked = (rent && rent.status === "accepted" ? "checked" : undefined)
+						) 
+						|  Accepted
+					div
+						input(
+							type = 'radio' 
+							value = 'rejected'
+							name = 'status'
+							checked = (rent && rent.status === "rejected" ? "checked" : undefined)
+						) 
+						|  Rejected
+				input(
+					class='btn btn-primary'
+					id = "submit-admin-btn"
+					onclick=(rent ? "update(event, '" + rent._id + "')" : "submitAdmin(event)")
+					type = 'submit'
+					value = 'submit'
+					
+				)
+				p(id='status')
+		div(class='col-6')
+			h3 List of rent periods:
+			br
+			+list(rentPeriods, rent)
+			span
+				div(class="legend gray")
+				|  Unavailable
+				br
+				div(class="legend white")
+				|  Available
+				br
+				div(class="legend green")
+				|  Selected
+block scripts
+	script(src='/javascripts/contact.js')

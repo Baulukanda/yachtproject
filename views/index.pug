@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	link(rel='stylesheet', href='/stylesheets/imgSliderIndex.css')
+
+	div(class='slideshow-container')
+		div(class='slides')
+			img(src='/images/yacht1.jpg')
+			div(class='text') Caption One
+
+		div(class='slides')
+			img(src='/images/yacht2.jpg')
+			div(class='text') Caption Two
+
+		div(class='slides')
+			img(src='/images/yacht3.jpg')
+			div(class='text') Caption Three
+	
+	script(src='/javascripts/imgSlider.js')
+
+block navbar
+	+navbar(labels, navbarActiveSection)
